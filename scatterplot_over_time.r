@@ -8,6 +8,9 @@ library(ggplot2)
 dtaframe <- read.table("data/timestamp_count.csv", sep = ",", header=TRUE)
 dtaframe$time <- as.POSIXct(dtaframe$time, tz="GMT", format="%Y-%m-%dT%H:%M:%S")
 
+dtaframe <- subset(dtaframe, time >= as.POSIXct(strptime('2012-03-13 18:55:00', '%Y-%m-%d %H:%M:%S')))
+dtaframe <- subset(dtaframe, time <= as.POSIXct(strptime('2012-03-13 19:15:00', '%Y-%m-%d %H:%M:%S')))
+
 print(range(dtaframe$time))
 print(summary(dtaframe$time))
 
